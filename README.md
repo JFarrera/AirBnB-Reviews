@@ -11,7 +11,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropiate.
 
-## License 📕
+# License 📕
 
 The project is licensed under the GNU General Public License v3.0. See the [LICENSE](LICENSE) file for more information.
 

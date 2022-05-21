@@ -19,15 +19,13 @@ def data_managment(filename):
     "SantsMontjuic","CiutatVella","SantMarti","Gracia","Horta","Sarria"])
 
     df1 = convert_decimal_to_int(df1)
-    df1 = convert_type_to_str(['reviews', 'accommodates'], df1)
+    df1 = convert_type_to_str('reviews', 4, df1)
     return df1
 
-def convert_type_to_str(columns, dataframe):
-    for column in columns:
-        dataframe[column] = dataframe[column].astype(str)
 
-    attributes_list[4]+='{'+','.join(x for x in list(map(str.strip,dataframe.reviews.unique())))+'}'
-    attributes_list[6]+='{'+','.join(x for x in list(map(str.strip,dataframe.accommodates.unique())))+'}'
+def convert_type_to_str(column: str, n_col: int, dataframe):
+    dataframe[column] = dataframe[column].astype(str)
+    attributes_list[n_col]+='{'+','.join(x for x in list(map(str.strip,dataframe[column].unique())))+'}'
     return dataframe
 
 

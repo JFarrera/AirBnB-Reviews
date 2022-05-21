@@ -1,6 +1,5 @@
 import sys
 import argparse
-from numpy import float64
 import pandas as pd 
 
 attributes_list = ['@RELATION overallSatisfaction','',
@@ -46,7 +45,7 @@ def convert_decimal_to_int(dataframe):
 def main(argv=None):
     args = parse_command_line_arguments(argv)
     dataset = data_managment(args.dataset)
-    return attributes_list
+    return print(type(dataset['price'].iloc[0]))
 
 
 def parse_command_line_arguments(argv=None):

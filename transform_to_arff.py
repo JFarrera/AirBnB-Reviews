@@ -1,5 +1,6 @@
 import sys
 import argparse
+from numpy import float64
 import pandas as pd 
 
 attributes_list = ['@RELATION overallSatisfaction','',
@@ -20,14 +21,19 @@ def data_managment(filename):
 
     df1 = convert_decimal_to_int(df1)
     df1 = convert_type_to_str('reviews', 4, df1)
+    df1 = convert_type_to_str('accommodates', 6, df1)
+    df1 = convert_type_to_str('bedrooms', 7, df1)
+    df1 = convert_type_to_str('price', 8, df1)
+    
     return df1
 
 
 def convert_type_to_str(column: str, n_col: int, dataframe):
+    if (not isinstance(dataframe[column], int)):
+        dataframe[column] = dataframe[column].astype(int)
     dataframe[column] = dataframe[column].astype(str)
     attributes_list[n_col]+='{'+','.join(x for x in list(map(str.strip,dataframe[column].unique())))+'}'
     return dataframe
-
 
 def convert_decimal_to_int(dataframe):
     dataframe = dataframe.replace([1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0],
@@ -40,7 +46,7 @@ def convert_decimal_to_int(dataframe):
 def main(argv=None):
     args = parse_command_line_arguments(argv)
     dataset = data_managment(args.dataset)
-    return dataset.isna().sum()
+    return attributes_list
 
 
 def parse_command_line_arguments(argv=None):

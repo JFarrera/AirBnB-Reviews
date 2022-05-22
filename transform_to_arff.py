@@ -1,6 +1,6 @@
 import sys
 import argparse
-import pandas as pd 
+import pandas as pd
 
 attributes_list = ['@RELATION overallSatisfaction','',
 '@ATTRIBUTE roomType {PrivateRoom,EntireHome,SharedRoom}',
@@ -9,6 +9,22 @@ attributes_list = ['@RELATION overallSatisfaction','',
 '@ATTRIBUTE accommodates ','@ATTRIBUTE bedrooms ',
 '@ATTRIBUTE price ','@ATTRIBUTE latitude ','@ATTRIBUTE longitude ','','@DATA']
 
+
+
+def write_headers(file):
+    for atr in attributes_list:
+        file.write(atr+'\n')
+
+def write_to_file(arff_file,files):
+    with open(files, 'w') as file:
+        write_headers(file)
+        for _,row in arff_file.iterrows():
+            for pos,value_col in enumerate(row):
+                file.write(str(value_col))
+                if pos != len(row)-1:
+                    file.write(',')
+            file.write('\n')
+    file.close()
 
 
 def data_managment(filename):
@@ -23,7 +39,17 @@ def data_managment(filename):
     df1 = convert_type_to_str('accommodates', 6, df1)
     df1 = convert_type_to_str('bedrooms', 7, df1)
     df1 = convert_type_to_str('price', 8, df1)
+
+    df1 = convert_to_quantile('latitude', 9, df1)
+    df1 = convert_to_quantile('longitude', 10, df1)
+
     return df1
+
+def convert_to_quantile(column: str, n_col:int, dataframe):
+    dataframe[column] = pd.qcut(dataframe[column], 5, labels=False)
+    dataframe[column] = dataframe[column].astype(str)
+    attributes_list[n_col]+='{'+','.join(x for x in list(map(str.strip,dataframe[column].unique())))+'}'
+    return dataframe
 
 
 def convert_type_to_str(column: str, n_col: int, dataframe):
@@ -44,7 +70,11 @@ def convert_decimal_to_int(column: str, dataframe):
 def main(argv=None):
     args = parse_command_line_arguments(argv)
     dataset = data_managment(args.dataset)
-    return print(type(dataset['price'].iloc[0]))
+    train_set = dataset.sample(frac=args.percentage, random_state=args.seed)
+    test_set = dataset.drop(train_set.index)
+
+    write_to_file(train_set,args.train)
+    write_to_file(test_set,args.test)
 
 
 def parse_command_line_arguments(argv=None):
@@ -52,6 +82,8 @@ def parse_command_line_arguments(argv=None):
     parser.add_argument('dataset', help='path to the dataset')
     parser.add_argument('train', help='file name for training')
     parser.add_argument('test', help='file name for testing')
+    parser.add_argument("seed",nargs="?",default=80617,type=int,help="Seed for the random test-train split")
+    parser.add_argument("percentage",nargs="?",default=0.75,type=float,help="Percentage of the training set range 0-1")
     return parser.parse_args(args=argv)
 
 if __name__ == "__main__":

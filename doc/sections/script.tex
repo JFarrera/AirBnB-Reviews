@@ -31,4 +31,7 @@
 
     \medskip
     En les columnes \texttt{accomodates} i \texttt{bedrooms} hem canviat el tipus dels valors que hi han en aquestes columnes a string ja que volem representar aquests valors en el format .arff.
+
+    \medskip
+    Les columnes \texttt{review}, \texttt{price}, \texttt{latitude} i \texttt{longitude}, per passar els seus valors continus a discrets s'ha utilitzat la funció \texttt{cut} de la llibreria \texttt{pandas}, la qual ens permet dividir el dataset en diferents intervals utilitzant el rang de valors. El nº de divisions que s'ha escollit per aquestes columnes és de 15 ja que s'ha provat diferents nº de divisions com per exemple, 5 o 20 i al posar els arxius train i test a Weka ens donava una \emph{accuracy} menor comparat amb 15 divisions que ens dóna major. Després d'aplicar el mètode \texttt{cut} canviem el tipus dels valors de les columnes a string ja que volem representar aquests valors en el format .arff.
 \end{document}

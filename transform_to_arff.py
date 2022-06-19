@@ -35,18 +35,18 @@ def data_managment(filename):
     "SantsMontjuic","CiutatVella","SantMarti","Gracia","Horta","Sarria"])
 
     df1 = convert_decimal_to_int('overall_satisfaction', df1)
-    df1 = convert_type_to_str('reviews', 4, df1)
     df1 = convert_type_to_str('accommodates', 6, df1)
     df1 = convert_type_to_str('bedrooms', 7, df1)
-    df1 = convert_type_to_str('price', 8, df1)
-
-    df1 = convert_to_quantile('latitude', 9, df1)
-    df1 = convert_to_quantile('longitude', 10, df1)
+    
+    df1 = convert_to_discrete('reviews', 4, df1, 15)
+    df1 = convert_to_discrete('price', 8, df1, 15)
+    df1 = convert_to_discrete('latitude', 9, df1, 15)
+    df1 = convert_to_discrete('longitude', 10, df1, 15)
 
     return df1
 
-def convert_to_quantile(column: str, n_col:int, dataframe):
-    dataframe[column] = pd.qcut(dataframe[column], 5, labels=False)
+def convert_to_discrete(column: str, n_col:int, dataframe, divisions:int):
+    dataframe[column] = pd.cut(dataframe[column], divisions, labels=False)
     dataframe[column] = dataframe[column].astype(str)
     attributes_list[n_col]+='{'+','.join(x for x in list(map(str.strip,dataframe[column].unique())))+'}'
     return dataframe

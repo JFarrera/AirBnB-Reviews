@@ -1,0 +1,23 @@
+\documentclass[../informe.tex]{subfiles}
+
+\usepackage{listings}
+
+\begin{document}
+    \section{Introducció}
+    En aquesta pràctica, se'ns demana realitzar 3 models probabilístics utilitzant weka:
+    \begin{enumerate}
+        \item Xarxes bayesianes obtingudes amb K2 a partir d'un model inicial buit i amb un ordre entre les variables escollides a l'atzar i amb un valor màxim de nombre de pares per variable igual a 3.
+        \item Xarxa bayesiana naive, on la variable \texttt{overall\_satisfaction} és la variable independent. Per tant, el valor màxim de pares per variable en aquest cas, serà igual a 0.
+        \item Xarxes bayesianes obtingudes amb K2 a partir d'un model inicial que sigui la xarxa bayesiana naive del punt 2, però amb un valor del número màxim de pares per variable igual a 3.
+    \end{enumerate}
+    Per a poder realitzar aquests 3 models, primer s'ha de crear un script de python per parsejar les dades i generar els fitxers \emph{train.arff} i \emph{test.arff}. La comanda per executar aquest script és:
+    \begin{Verbatim}[fontsize=\small]
+   python3 transform_to_arff.py barca.csv <train-arff-file> <test-arff-file>
+    \end{Verbatim}
+    Per a executar el programa es necessari tenir \textbf{python3} al sistema. Si es té, s'ha de realitzar les següents comandes al terminal:
+    \begin{lstlisting}[language=bash]
+  python3 -m venv venv
+  source venv/bin/activate
+  python3 -m pip install -r requirements.txt
+    \end{lstlisting}
+\end{document}

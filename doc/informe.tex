@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\graphicspath{{img/}}
+
+\usepackage[catalan]{babel}
+\selectlanguage{catalan}
+
+\usepackage{geometry}
+\newgeometry{bottom=3cm, top=3cm, left=3cm, right=3cm}
+
+\usepackage{fancyhdr}
+% \setlength{\headheight}{15.72pt}
+% \pagestyle{fancy}
+% \lhead[]{Pràctica 2: Models probabilístics}
+% \rhead[]{A.R.A}
+% \chead[]{}
+\cfoot[]{\thepage}
+% \renewcommand{\headrulewidth}{1pt}
+% \renewcommand{\footrulewidth}{1pt}
+
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{subfiles}
+
+\setlength{\parindent}{0cm}
+
+\begin{document}
+    % Portada
+    \subfile{sections/title-page}
+
+    % Introducció
+    \newpage
+    \subfile{sections/introduction}
+
+    % Parseig de dades
+    \subfile{sections/script}
+
+\end{document}

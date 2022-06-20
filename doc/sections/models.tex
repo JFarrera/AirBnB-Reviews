@@ -1,5 +1,39 @@
 \documentclass[../informe.tex]{subfiles}
 
+\usepackage{float}
+
 \begin{document}
     \section{Models}
+    En aquest apartat, es pot veure els valors, tant la puntuació \texttt{log(UPSM)} com el percentatge d'error de la classificació.
+    
+    \subsection{Models de la classe 1}
+    Les 10 execucions que s'ha realitzat, ens ha donat els següents resultats:
+    \begin{enumerate}
+        \item \textbf{log(UPSM)}: -89814.4077531957 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -90397.4380825399 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.19 \%
+        \item \textbf{log(UPSM)}: -90415.35102713174 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -90389.28857008628 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -89867.8124939057 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -90211.85119256149 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -90211.85119256149 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -90450.80679248775 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -90401.35562920943 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+        \item \textbf{log(UPSM)}: -89702.37746226412 \ \ \ \ \ \ \ \ \textbf{Error classificació}: 50.1583 \%
+    \end{enumerate}
+
+    Per a poder seleccionar el millor model dels anteriors hem d'observar quin d'ells té el menor error de classificació, és a dir, el quin més encerts té.
+
+    \medskip
+    Com s'observa, casi tots els models excepte el 2 tenen el mateix error de classificació, i perquè l'error menor és el més repetit per a seleccionar el millor model s'ha d'agafar el quin tingui la puntuació \texttt{log(UPSM)} major. Per tant, el millor model és el 10è.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.7\textwidth]{model1.png}
+        \caption{Millor model de classe 1}
+        \label{fig:model1}
+    \end{figure}
+
+    \medskip
+    \subsection{Model de la classe 2}
+
 \end{document}

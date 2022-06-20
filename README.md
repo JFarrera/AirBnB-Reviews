@@ -2,8 +2,14 @@
 
 The objective is to predict the average rating of an AirBnB accomodation, in the range [1, 2, 3, 4, 5], based on different characteristics of the accomodation.
 
-# Installation
+# Dependencies 📩
 
+To run this project all you have to do is:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
 
 # Contributing 🧑‍🤝‍🧑
 

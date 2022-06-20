@@ -7,7 +7,7 @@
     \subsection{Línia de comandes}
     Per parsejar les dades passades per la línia de comandes, s'ha utilitzat el mòdul de python \texttt{argparser}. Aquest ens permet posar arguments opcionals per a ser utilitzats en el parseig. Per tant els diferents arguments que es poden passar són:
     \begin{itemize}
-        \item \texttt{dataset}: argument en el qual s'indica la ruta cap al fitxer .csv que conté les dades a parsejar 
+        \item \texttt{dataset}: argument en el qual s'indica la ruta cap al fitxer .csv que conté les dades a parsejar. 
         \item \texttt{train}: s'indica el nom a posar pel fitxer de train incloent l'extensió .arff, és a dir, $<$nom-fitxer$>$.arff.
         \item \texttt{test}: s'indica el nom a posar pel fitxer de test incloent l'extensió .arff, és a dir, $<$nom-fitxer$>$.arff.
         \item \texttt{seed}: permet canviar la llavor en la qual s'agafen els valors per a fer els dos datasets train i test. Si aquest camp no s'especifica, s'agafa com a valor per defecte els últims cinc dígits del DNI d'un dels autors de la pràctica.
@@ -27,7 +27,13 @@
     \end{itemize}
 
     \subsection{Pandas}
-    Per a poder realitzar el parseig de les dades hem utilitzat \texttt{pandas}. Per fer-ho, s'ha utilitzat la funció \texttt{read\_csv}, la qual ens permet carregar el dataset. Per a tractar les dades que tenim al dataset, hem canviat els noms de la columna \texttt{room\_type} utilitzant el mètode \texttt{replace} per tenir-los tots amb el mateix format, ja que hi ha diferents tipus d'habitacions que el seu format és separat en guions i d'altres que es separat en espais. També hem mapejat els valors de la columna \texttt{overall\_satisfaction} on inicialment els valors d'aquesta columna eren [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] i al mapejar-los queda de la següent manera: [1, 2, 3, 4, 5, 6, 7, 8, 9].
+    Per poder realitzar el parseig de les dades hem utilitzat \texttt{pandas}. En primer lloc la funció \texttt{read\_csv}, la qual ens permet llegir el dataset. 
+    
+    \medskip
+    Per tractar les dades que tenim al dataset, hem canviat els noms de la columna \texttt{room\_type} utilitzant el mètode \texttt{replace} per tenir-los tots amb el mateix format, ja que hi ha diferents tipus d'habitacions que el seu format és separat en guions i d'altres que es separat en espais. 
+    
+    \medskip
+    També hem mapejat els valors de la columna \texttt{overall\_satisfaction} on inicialment els valors d'aquesta columna eren [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5] i al mapejar-los queda de la següent manera: [1, 2, 3, 4, 5, 6, 7, 8, 9].
 
     \medskip
     En les columnes \texttt{accomodates} i \texttt{bedrooms} hem canviat el tipus dels valors que hi han en aquestes columnes a string ja que volem representar aquests valors en el format .arff.
